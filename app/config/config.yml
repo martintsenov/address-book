@@ -44,7 +44,7 @@ twig:
 doctrine:
     dbal:
         driver: pdo_sqlite
-        path: '%kernel.project_dir%/app/db/sqlite.db'
+        path: '%kernel.project_dir%/app/data/address-book.db'
         charset: UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml

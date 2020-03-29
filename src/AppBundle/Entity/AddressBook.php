@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * AddressBook
  *
  * @ORM\Table(name="address_book")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AddressBookRepository")
+ * @ORM\Entity
  */
 class AddressBook
 {
@@ -24,12 +25,16 @@ class AddressBook
     /**
      * @var string
      *
+     * @Assert\NotBlank
+     *
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank
      *
      * @ORM\Column(name="lastName", type="string", length=255)
      */
@@ -38,12 +43,16 @@ class AddressBook
     /**
      * @var string
      *
+     * @Assert\NotBlank
+     *
      * @ORM\Column(name="street", type="string", length=255)
      */
     private $street;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank
      *
      * @ORM\Column(name="zipCode", type="string", length=10)
      */
@@ -52,12 +61,16 @@ class AddressBook
     /**
      * @var string
      *
+     * @Assert\NotBlank
+     *
      * @ORM\Column(name="city", type="string", length=255)
      */
     private $city;
 
     /**
      * @var string
+     *
+     * @Assert\NotBlank
      *
      * @ORM\Column(name="country", type="string", length=64)
      */
@@ -66,12 +79,17 @@ class AddressBook
     /**
      * @var string
      *
+     * @Assert\NotBlank
+     *
      * @ORM\Column(name="phone", type="string", length=64)
      */
     private $phone;
 
     /**
      * @var \DateTime
+     *
+     * @Assert\NotBlank
+     * @Assert\DateTime
      *
      * @ORM\Column(name="birthday", type="datetime")
      */
@@ -80,6 +98,9 @@ class AddressBook
     /**
      * @var string
      *
+     * @Assert\NotBlank
+     * @Assert\Email
+     *
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
@@ -87,7 +108,7 @@ class AddressBook
     /**
      * @var string
      *
-     * @ORM\Column(name="picture", type="string", length=255)
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
 

@@ -1,0 +1,15 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block content %}
+
+   <div class="row">
+
+      <div class="col-md-10 col-md-offset-1">
+         {% for addressBook in addressBooks %}
+            {{addressBook.firstName}} | {{addressBook.lastName}} | {{addressBook.street}} | {{addressBook.zipCode}} | {{addressBook.city}}
+            <br>
+         {% endfor %}
+      </div>
+   </div>
+
+{% endblock %}
