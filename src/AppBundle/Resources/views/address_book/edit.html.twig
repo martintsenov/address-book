@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form with ['bootstrap_4_horizontal_layout.html.twig','@App/address_book/form_fields.html.twig'] %}
+
+{% block content %}
+   {{ form_start(form) }}
+   {{ form_widget(form) }}
+   {{ form_end(form) }}
+{% endblock %}

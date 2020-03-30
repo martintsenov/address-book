@@ -1,15 +1,32 @@
-{% extends '@App/layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block content %}
-
-   <div class="row">
-
-      <div class="col-md-10 col-md-offset-1">
-         {% for addressBook in addressBooks %}
-            {{addressBook.firstName}} | {{addressBook.lastName}} | {{addressBook.street}} | {{addressBook.zipCode}} | {{addressBook.city}}
-            <br>
-         {% endfor %}
-      </div>
-   </div>
-
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for addressBook in addressBooks %}
+            <tr>
+                <td>{{addressBook.firstName}}</td>
+                <td>{{addressBook.lastName}}</td>
+                <td>{{addressBook.street}}, {{addressBook.zipCode}} {{addressBook.city}}, {{addressBook.country}}</td>
+                <td>{{addressBook.phone}}</td>
+                <td>{{addressBook.birthday|date("m/d/Y")}}</td>
+                <td>{{addressBook.email}}</td>
+                <td><a class="btn btn-primary btn-light" href="{{ path('address_edit', {id: addressBook.id}) }}"
+                       role="button">Edit</a> </td>
+                <td><a class="btn btn-primary btn-light" href="{{ path('address_delete', {id: addressBook.id}) }}"
+                       role="button">Delete</a> </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

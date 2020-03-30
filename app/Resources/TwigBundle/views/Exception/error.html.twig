@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h4>An Error Occurred</h4>
+    <h4>The server returned a "{{ status_code }} {{ status_text }}".</h4>
+    <div>
+        Something is broken. Please let us know what you were doing when this error occurred.
+        We will fix it as soon as possible. Sorry for any inconvenience caused.
+    </div>
+{% endblock %}

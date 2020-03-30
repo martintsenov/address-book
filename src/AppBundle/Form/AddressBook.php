@@ -3,13 +3,20 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type as FormType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use AppBundle\Entity\AddressBook as AddressBookEntity;
 
 class AddressBook extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -20,12 +27,18 @@ class AddressBook extends AbstractType
             ->add('city')
             ->add('country')
             ->add('phone')
-            ->add('birthday', FormType\DateTimeType::class)
+            ->add('birthday', FormType\DateType::class, [
+                'widget' => 'choice',
+                'years' => range(date('Y')-80, date('Y')+20),
+            ])
             ->add('email', FormType\EmailType::class)
             ->add('save', FormType\SubmitType::class, ['label' => 'Save'])
         ;
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

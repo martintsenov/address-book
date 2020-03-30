@@ -38,6 +38,9 @@ class AddressBook implements AddressBookInterface
         }
     }
 
+    /**
+     * @return array
+     */
     public function findAll(): array
     {
         try {
