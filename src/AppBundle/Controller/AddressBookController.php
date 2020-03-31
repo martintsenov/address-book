@@ -37,7 +37,6 @@ class AddressBookController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $service->save($form);
-
             $this->addFlash("success", "New address added.");
 
             return $this->redirectToRoute('address');
@@ -85,7 +84,6 @@ class AddressBookController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $service->save($form);
-
             $this->addFlash("success", "The address was updated.");
 
             return $this->redirectToRoute('address');
