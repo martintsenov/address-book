@@ -2,14 +2,14 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\AddressBook as AddressBookEntity;
+use HtmlPurifier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type as FormType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use AppBundle\Entity\AddressBook as AddressBookEntity;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use HtmlPurifier;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AddressBook extends AbstractType
 {

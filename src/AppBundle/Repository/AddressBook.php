@@ -2,9 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\AddressBook as AddressBookEntity;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use AppBundle\Entity\AddressBook as AddressBookEntity;
 
 class AddressBook implements AddressBookInterface
 {

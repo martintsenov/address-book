@@ -2,8 +2,8 @@
 
 namespace AppBundle\Service;
 
-use Symfony\Component\Form\FormInterface;
 use AppBundle\Entity\AddressBook as AddressBookEntity;
+use Symfony\Component\Form\FormInterface;
 
 interface AddressBookInterface
 {

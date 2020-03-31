@@ -2,12 +2,12 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\AddressBook as AddressBookEntity;
+use AppBundle\Form\AddressBook as AddressBookForm;
+use AppBundle\Service\AddressBookInterface as AddressBookServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use AppBundle\Service\AddressBookInterface as AddressBookServiceInterface;
-use AppBundle\Entity\AddressBook as  AddressBookEntity;
-use AppBundle\Form\AddressBook as AddressBookForm;
 
 class AddressBookController extends Controller
 {

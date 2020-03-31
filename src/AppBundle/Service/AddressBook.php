@@ -2,9 +2,8 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Repository\AddressBookInterface as  AddressBookRepositoryInterface;
 use AppBundle\Entity\AddressBook as AddressBookEntity;
-use Doctrine\ORM\Query\Printer;
+use AppBundle\Repository\AddressBookInterface as AddressBookRepositoryInterface;
 use Symfony\Component\Form\FormInterface;
 
 class AddressBook implements AddressBookInterface
