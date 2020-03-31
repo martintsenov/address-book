@@ -2,34 +2,31 @@
 
 namespace AppBundle\Service;
 
-use AppBundle\Repository\AddressBookRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use AppBundle\Repository\AddressBookInterface as  AddressBookRepositoryInterface;
+use AppBundle\Entity\AddressBook as AddressBookEntity;
+use Doctrine\ORM\Query\Printer;
 use Symfony\Component\Form\FormInterface;
 
 class AddressBook implements AddressBookInterface
 {
-    /** @var AddressBookRepository */
-    private $repo;
-    /** @var EntityManagerInterface */
-    private $entityManager;
+    /** @var AddressBookRepositoryInterface */
+    private $repository;
 
-    public function __construct(AddressBookRepository $repo, EntityManagerInterface $entityManager)
+    public function __construct(AddressBookRepositoryInterface $repository)
     {
-        $this->repo = $repo;
-        $this->entityManager = $entityManager;
+        $this->repository = $repository;
     }
 
     /**
      * @param FormInterface $form
      * @return bool
      */
-    public function add(FormInterface $form): bool
+    public function save(FormInterface $form): bool
     {
         $entity = $form->getData();
 
         try {
-            $this->entityManager->persist($entity);
-            $this->entityManager->flush();
+            $this->repository->save($entity);
 
             return true;
         } catch (\Exception $e) {
@@ -44,10 +41,46 @@ class AddressBook implements AddressBookInterface
     public function findAll(): array
     {
         try {
-            return $this->repo->findAll();
+            return $this->repository->findAll();
         } catch (\Exception $e) {
             // log exception
             return [];
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return AddressBookEntity|null
+     */
+    public function getById(int $id): ?AddressBookEntity
+    {
+        try {
+            return $this->repository->findById($id);
+        } catch (\Exception $e) {
+            // log exception
+            return null;
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return bool
+     */
+    public function delete(int $id): bool
+    {
+        $entity = $this->repository->findById($id);
+
+        if (!$entity) {
+            return false;
+        }
+
+        try {
+            $this->repository->delete($entity);
+
+            return true;
+        } catch (\Exception $e) {
+            // log exception
+            return false;
         }
     }
 }
