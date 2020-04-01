@@ -36,7 +36,7 @@ class AddressBook extends AbstractType
             ->add('zipCode')
             ->add('city')
             ->add('country')
-            ->add('phone')
+            ->add('phone', FormType\IntegerType::class)
             ->add('birthday', FormType\DateType::class, [
                 'widget' => 'choice',
                 'years' => range(date('Y')-80, date('Y')+20),
